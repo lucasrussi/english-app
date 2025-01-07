@@ -1,7 +1,8 @@
 
 interface storagedInterface {
   questionId:number,
-  responseId:number
+  responseId:number,
+  status:boolean
 }
 
 export default class Storage {
@@ -28,7 +29,30 @@ export default class Storage {
   }
 
   setReponseStorage(obj:storagedInterface){
-    localStorage.setItem(this.keyResponseStorage,JSON.stringify(obj))
+    let storagedData = this.getResponseStorage();
+    storagedData = this.updateOrInsertArray(obj,storagedData)
+    localStorage.setItem(this.keyResponseStorage,JSON.stringify(storagedData));
+  }
+
+  getQuestionAlreadyResponded(questionId:number):boolean{
+    const questionResponded = this.getResponseStorage();
+    const index = questionResponded.findIndex((item)=> item.questionId === questionId)
+    if(index !== -1) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  private updateOrInsertArray(obj:storagedInterface,storagedData:storagedInterface[]):storagedInterface[]{
+
+    const index = storagedData.findIndex((item) => item.questionId === obj.questionId);
+    if (index !== -1) {
+      storagedData[index] = { ...storagedData[index], ...obj };
+    } else {
+      storagedData.push(obj);
+    }
+    return storagedData;
   }
 
 }
