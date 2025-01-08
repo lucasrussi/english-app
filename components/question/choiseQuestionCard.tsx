@@ -57,11 +57,19 @@ export default function ChoiseQuestionCard(props:Props){
         {
           props.question.response.map((item)=>{
            
+            const buttonStatus = getButtonStatus(item.id);
+
             return (
               <button
                 key={`response-${props.key}-${item.id}`}
                 className={`w-full px-4 py-2 text-left text-sm font-medium rounded-md border
-                 
+                 ${
+                    buttonStatus === 'answered-correct' 
+                    ? 'bg-green-100 border-green-300 text-green-700'
+                    : buttonStatus === 'answered-incorrect' 
+                    ? 'bg-red-100 border-red-300 text-red-700'
+                    : 'bg-gray-100 border-gray-300 text-gray-700 hover:bg-gray-200'
+                 }
                 `}
                 onClick={()=>handleResponse(item.status,props.question.id)}
               >
@@ -71,7 +79,10 @@ export default function ChoiseQuestionCard(props:Props){
           })
         }
       </div>
-      
+      {explanation !== '' ?
+        <div className="text-sm font-medium p-1 shadow-md mt-1 rounded-md border-2">{explanation}</div>
+        :null
+      }
     </div>
   )
 }
