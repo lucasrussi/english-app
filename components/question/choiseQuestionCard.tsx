@@ -4,12 +4,13 @@ import ChoiseQuestionInterface from "../../interface/choiseQuestionInterface";
 
 type Props = {
   question:ChoiseQuestionInterface,
-  key:string,
+  questionKey:string,
   answeredQuestion:{
-    questionId:number,
-    status:boolean
+    status:boolean,
+    responseId:number,
+    questionId:number
   } | null,
-  handleResponseAnswer:(status:boolean,questionId:number) => {status:boolean,questionId:number}
+  handleResponseAnswer:(status:boolean,responseId:number,questionId:number) => void
 }
 
 
@@ -19,13 +20,13 @@ export default function ChoiseQuestionCard(props:Props){
   const [statusQuestionAnswered, setStatusQuestionAnswered] = useState<boolean|null>(null)
   const [explanation, setExplanation] = useState<string>('')
 
-  const handleResponse = (status:boolean,questionId:number) =>{
-   props.handleResponseAnswer(status,questionId);
+  const handleResponse = (status:boolean,responseId:number,questionId:number) =>{
+   props.handleResponseAnswer(status,responseId,questionId);
   }
 
   const getButtonStatus = (questionId:number):string =>{
     if(questionAnswered != null){
-      if(questionAnswered === questionId){
+      if(questionAnswered === questionId && props.question.id === props.answeredQuestion?.questionId){
         return statusQuestionAnswered ? 'answered-correct' : 'answered-incorrect'
       }else{
         return ''
@@ -39,9 +40,11 @@ export default function ChoiseQuestionCard(props:Props){
 
   useEffect(()=>{
     if(props.answeredQuestion != null){
-      setQuestionAnswered(props.answeredQuestion.questionId)
+      setQuestionAnswered(props.answeredQuestion.responseId)
       setStatusQuestionAnswered(props.answeredQuestion.status)
-      props.answeredQuestion.status ? setExplanation(props.question.response[props.answeredQuestion.questionId].explanation) : setExplanation('')
+
+      setExplanation(props.question.response.find((item)=>item.id === props.answeredQuestion!.responseId)!.explanation)
+
     }
   },[props.answeredQuestion])
 
@@ -50,7 +53,7 @@ export default function ChoiseQuestionCard(props:Props){
   return (
     <div 
       className="p-4 bg-white border rounded-md shadow-md  min-w-full"
-      key={props.key}
+      key={props.questionKey}
     >
       <p className="text-lg font-semibold text-gray-700 mb-4">{props.question.phase}</p>
       <div className="space-y-3">
@@ -61,7 +64,7 @@ export default function ChoiseQuestionCard(props:Props){
 
             return (
               <button
-                key={`response-${props.key}-${item.id}`}
+                key={`response-${props.questionKey}-${item.id}`}
                 className={`w-full px-4 py-2 text-left text-sm font-medium rounded-md border
                  ${
                     buttonStatus === 'answered-correct' 
@@ -71,7 +74,7 @@ export default function ChoiseQuestionCard(props:Props){
                     : 'bg-gray-100 border-gray-300 text-gray-700 hover:bg-gray-200'
                  }
                 `}
-                onClick={()=>handleResponse(item.status,props.question.id)}
+                onClick={()=>handleResponse(item.status,item.id,props.question.id)}
               >
                 {item.alternative}
               </button>
