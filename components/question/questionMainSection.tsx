@@ -91,7 +91,7 @@ export default function QuestionMainSection(props:Props){
 
 
   return (
-    <section>
+    <section className="w-full flex flex-col items-center">
       { dataQuestion[currentQuestion] != undefined ?
         <ChoiseQuestionCard
           question={dataQuestion[currentQuestion]}

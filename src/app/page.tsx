@@ -1,13 +1,13 @@
 'use client'
-import QuestionMainSection from "../../components/question/questionMainSection";
+
+import Header from "../../components/header/header.component";
+
 
 export default function Home() {
+ 
   return (
     <>
-      <QuestionMainSection
-        theme="simple_present"
-      />
-    
+      <Header/>
     </>
   );
 }
