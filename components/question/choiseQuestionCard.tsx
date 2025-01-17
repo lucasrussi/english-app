@@ -52,7 +52,7 @@ export default function ChoiseQuestionCard(props:Props){
 
   return (
     <div 
-      className="p-4 bg-white border rounded-md shadow-md  min-w-full"
+      className="p-4 bg-white border rounded-md shadow-md  w-1/3"
       key={props.questionKey}
     >
       <p className="text-lg font-semibold text-gray-700 mb-4">{props.question.phase}</p>

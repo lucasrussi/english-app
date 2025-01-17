@@ -9,6 +9,7 @@ import { OrderWordPersonalPronouns } from "../../database/basic/order-word-perso
 import { TransformToNegative } from "../../database/basic/transform-to-negative.const"
 import { TransformToQuestionFormation } from "../../database/basic/transform-to-question-formation.const"
 import Storage from "../../classe/storage.class"
+import PaginationQuestion from "./paginationQuestion"
 
 type Props = {
   theme:'simple_present' |
@@ -69,11 +70,10 @@ export default function QuestionMainSection(props:Props){
   const handleResponseAnswer = (status:boolean,responseId:number,questionId:number) => {
     setAnsweredQuestion({status,responseId,questionId})
     storage.setReponseStorage({status,responseId,questionId})
-    
+    setQuestionAnswered(storage.getResponseStorage())
 
     if(status){
 
-      console.log(`dataQuestion.length ${dataQuestion.length} || currentQuestion ${currentQuestion}`)
 
       if(currentQuestion < dataQuestion.length){ 
         setTimeout(()=>{
@@ -83,7 +83,9 @@ export default function QuestionMainSection(props:Props){
     }
   }
 
-
+  const handleChangeQuestion = (index:number) =>{
+    setCurrentQuestion(index)
+  }
 
 
 
@@ -99,6 +101,13 @@ export default function QuestionMainSection(props:Props){
         />
         : <p>Loading Question...</p>
       }
+
+      <PaginationQuestion 
+        length={dataQuestion.length} 
+        actualQuestion={currentQuestion} 
+        questionDone={questionAnswered} 
+        handleChangeQuestion={handleChangeQuestion}        
+      />
     </section>
   )
 }
