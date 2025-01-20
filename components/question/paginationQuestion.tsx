@@ -5,7 +5,7 @@ import { faCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { faCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 type Props = {
-  length:number,
+  questionId:number[],
   actualQuestion:number,
   questionDone:{
     questionId:number,
@@ -21,12 +21,14 @@ export default function PaginationQuestion(props: Props){
 
   const calculatePaginationRange = () => {
     const start = actualStage * quantiteByStage;
-    const end = Math.min(start + quantiteByStage, props.length);
-    return Array.from({ length: end - start }, (_, i) => start + i);
+    const end = Math.min(start + quantiteByStage, props.questionId.length);
+    console.log('props.questionId',props.questionId);
+    return props.questionId.slice(start, end); // Retorna os IDs da página atual
   };
 
+  // Navega para a próxima página
   const handleNext = () => {
-    if ((actualStage + 1) * quantiteByStage < props.length) {
+    if ((actualStage + 1) * quantiteByStage < props.questionId.length) {
       setActualStage(actualStage + 1);
     }
   };
@@ -54,28 +56,28 @@ export default function PaginationQuestion(props: Props){
 
       <div className={`grid gap-2 lg:grid-cols-5 w-full justify-items-center`}>
        {
-        paginationRange.map((item, index) => {
+        paginationRange.map((id) => {
           const verifyQuestionIsResponded = (questionId: number): boolean | undefined => {
             return props.questionDone.find((item) => item.questionId === questionId)?.status;
           };
-          const questionIsResponded: boolean | undefined = verifyQuestionIsResponded(item);
+          const questionIsResponded: boolean | undefined = verifyQuestionIsResponded(id);
           return (
             <div
               className={`border py-1 px-3 rounded-full text-center cursor-pointer transition-all
                 ${
-                  questionIsResponded !== undefined
-                    ? props.actualQuestion !== item
-                      ? questionIsResponded === true
-                        ? 'bg-green-400'
-                        : 'bg-red-400'
-                      : 'bg-cyan-400'
+                  props.actualQuestion === id ?
+                    'bg-cyan-400'
+                  : questionIsResponded !== undefined ?
+                      questionIsResponded === true ?
+                      'bg-green-400'
+                      : 'bg-red-400'
                     : 'bg-gray-200'
                 }
               `}
-              key={`question-index-${item}`}
-              onClick={() => props.handleChangeQuestion(item)}
+              key={`question-index-${id}`}
+              onClick={() => props.handleChangeQuestion(id)}
             >
-            {item + 1}
+            {id}
             </div>
           )
        })}
@@ -83,7 +85,7 @@ export default function PaginationQuestion(props: Props){
       <button
         className={`border py-1 px-2 rounded-full bg-cyan-600 disabled:opacity-50`}
         onClick={handleNext}
-        disabled={(actualStage + 1) * quantiteByStage >= props.length}
+        disabled={(actualStage + 1) * quantiteByStage >= props.questionId.length!}
       >
         <FontAwesomeIcon icon={faCircleRight} style={{color:"white"}}/>
       </button>

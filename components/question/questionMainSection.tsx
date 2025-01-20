@@ -40,6 +40,7 @@ export default function QuestionMainSection(props:Props){
   const [currentQuestion, setCurrentQuestion] = useState<number>(0)
   const [questionAnswered,setQuestionAnswered] = useState<storagedInterface[]>([])
   const [answeredQuestion,setAnsweredQuestion] = useState<storagedInterface|null>(null)
+  const [allQuestionId, setAllQuestionId] = useState<number[]>([])
   const storage = new Storage()
   storage.setKeyResponseStorage(props.theme)
 
@@ -55,7 +56,7 @@ export default function QuestionMainSection(props:Props){
     ];
 
     setDataQuestion(dataByTheme.find((item)=> item.theme === props.theme)!.data);
-
+    
     
     setQuestionAnswered(storage.getResponseStorage())
 
@@ -66,6 +67,10 @@ export default function QuestionMainSection(props:Props){
     )
 
   },[props.theme])
+
+  useEffect(()=>{
+    setAllQuestionId(dataQuestion.map((item) => item.id))
+  },[dataQuestion])
 
   const handleResponseAnswer = (status:boolean,responseId:number,questionId:number) => {
     setAnsweredQuestion({status,responseId,questionId})
@@ -93,21 +98,30 @@ export default function QuestionMainSection(props:Props){
   return (
     <section className="w-full flex flex-col items-center">
       { dataQuestion[currentQuestion] != undefined ?
+        
         <ChoiseQuestionCard
           question={dataQuestion[currentQuestion]}
           questionKey={`${props.theme}_${currentQuestion}`}
           handleResponseAnswer={handleResponseAnswer} 
           answeredQuestion={answeredQuestion}      
         />
+          
+        
         : <p>Loading Question...</p>
       }
+      
+      {
+        allQuestionId.length > 0 ?
+          <PaginationQuestion 
+            questionId={allQuestionId} 
+            actualQuestion={currentQuestion} 
+            questionDone={questionAnswered} 
+            handleChangeQuestion={handleChangeQuestion}
+          />
+          : <p>Loading Question...</p>
 
-      <PaginationQuestion 
-        length={dataQuestion.length} 
-        actualQuestion={currentQuestion} 
-        questionDone={questionAnswered} 
-        handleChangeQuestion={handleChangeQuestion}        
-      />
+      }
+      
     </section>
   )
 }
