@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from "react"
 import ChoiseQuestionCard from "./choiseQuestionCard"
 import ChoiseQuestionInterface from "../../interface/choiseQuestionInterface"
@@ -37,7 +38,8 @@ interface storagedInterface {
 export default function QuestionMainSection(props:Props){
 
   const [dataQuestion,setDataQuestion] = useState<ChoiseQuestionInterface[]>([])
-  const [currentQuestion, setCurrentQuestion] = useState<number>(0)
+  const [currentIdQuestion, setCurrentIdQuestion] = useState<number>(0)
+  const [currentQuestion,setCurrentQuestion] = useState<ChoiseQuestionInterface>()
   const [questionAnswered,setQuestionAnswered] = useState<storagedInterface[]>([])
   const [answeredQuestion,setAnsweredQuestion] = useState<storagedInterface|null>(null)
   const [allQuestionId, setAllQuestionId] = useState<number[]>([])
@@ -61,16 +63,23 @@ export default function QuestionMainSection(props:Props){
     setQuestionAnswered(storage.getResponseStorage())
 
     
-    setCurrentQuestion(questionAnswered.reduce((max,current)=>{
-        return current.questionId > max ? current.questionId : max
-      },0)
-    )
-
+   
   },[props.theme])
 
   useEffect(()=>{
     setAllQuestionId(dataQuestion.map((item) => item.id))
   },[dataQuestion])
+
+  useEffect(()=>{
+    setCurrentIdQuestion(questionAnswered.reduce((max,current)=>{
+      return current.questionId > max ? current.questionId : max
+    },1)
+  )
+  },[questionAnswered])
+
+  useEffect(()=>{
+    setCurrentQuestion(dataQuestion.find((item)=>item.id === currentIdQuestion))
+  },[currentIdQuestion])
 
   const handleResponseAnswer = (status:boolean,responseId:number,questionId:number) => {
     setAnsweredQuestion({status,responseId,questionId})
@@ -80,16 +89,25 @@ export default function QuestionMainSection(props:Props){
     if(status){
 
 
-      if(currentQuestion < dataQuestion.length){ 
+      if(currentIdQuestion < dataQuestion.length){ 
         setTimeout(()=>{
-          setCurrentQuestion(currentQuestion+1);
+          setCurrentIdQuestion(currentIdQuestion+1);
         },1000)
       }
     }
   }
 
   const handleChangeQuestion = (index:number) =>{
-    setCurrentQuestion(index)
+    storage.setKeyResponseStorage(props.theme)
+    const storageAnswered = storage.getQuestionRespondedById(index)
+
+    if(storageAnswered){
+      setAnsweredQuestion(storageAnswered)
+    }
+
+
+
+    setCurrentIdQuestion(index)
   }
 
 
@@ -97,11 +115,11 @@ export default function QuestionMainSection(props:Props){
 
   return (
     <section className="w-full flex flex-col items-center">
-      { dataQuestion[currentQuestion] != undefined ?
+      { currentQuestion != undefined ?
         
         <ChoiseQuestionCard
-          question={dataQuestion[currentQuestion]}
-          questionKey={`${props.theme}_${currentQuestion}`}
+          question={currentQuestion}
+          questionKey={`${props.theme}_${currentIdQuestion}`}
           handleResponseAnswer={handleResponseAnswer} 
           answeredQuestion={answeredQuestion}      
         />
@@ -114,7 +132,7 @@ export default function QuestionMainSection(props:Props){
         allQuestionId.length > 0 ?
           <PaginationQuestion 
             questionId={allQuestionId} 
-            actualQuestion={currentQuestion} 
+            actualQuestion={currentIdQuestion} 
             questionDone={questionAnswered} 
             handleChangeQuestion={handleChangeQuestion}
           />

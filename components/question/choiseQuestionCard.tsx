@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from "react";
 import ChoiseQuestionInterface from "../../interface/choiseQuestionInterface";
 
@@ -25,6 +27,11 @@ export default function ChoiseQuestionCard(props:Props){
   }
 
   const getButtonStatus = (questionId:number):string =>{
+
+    console.log('questionAnswered',questionAnswered)
+    console.log('questionId',questionId)
+
+
     if(questionAnswered != null){
       if(questionAnswered === questionId && props.question.id === props.answeredQuestion?.questionId){
         return statusQuestionAnswered ? 'answered-correct' : 'answered-incorrect'
@@ -39,12 +46,15 @@ export default function ChoiseQuestionCard(props:Props){
 
 
   useEffect(()=>{
-    if(props.answeredQuestion != null){
+
+
+    if(props.answeredQuestion != null && props.answeredQuestion.questionId === props.question.id){
       setQuestionAnswered(props.answeredQuestion.responseId)
       setStatusQuestionAnswered(props.answeredQuestion.status)
 
-      setExplanation(props.question.response.find((item)=>item.id === props.answeredQuestion!.responseId)!.explanation)
-
+      if(!props.answeredQuestion.status){
+        setExplanation(props.question.response.find((item)=>item.id === props.answeredQuestion!.responseId)!.explanation)
+      }
     }
   },[props.answeredQuestion])
 
@@ -55,6 +65,9 @@ export default function ChoiseQuestionCard(props:Props){
       className="p-4 bg-white border rounded-md shadow-md  w-1/3"
       key={props.questionKey}
     >
+      <div className="flex justify-end">
+        <div className="rounded-full text-gray-700 bg-cyan-400 py-1 px-3"> {props.question.id} </div>
+      </div>
       <p className="text-lg font-semibold text-gray-700 mb-4">{props.question.phase}</p>
       <div className="space-y-3">
         {

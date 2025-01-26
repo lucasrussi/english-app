@@ -1,9 +1,11 @@
 'use client'
+import { useState } from "react";
 import Header from "../../../components/header/header.component";
 import QuestionMainSection from "../../../components/question/questionMainSection";
 import InfoVerbToBeComponent from "../../../components/theory/infoVerbToBe.component";
 
 export default function PageVertToBe(){
+
   return (
     <>
       <Header/>

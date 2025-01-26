@@ -44,6 +44,16 @@ export default class Storage {
     }
   }
 
+  getQuestionRespondedById(questionId:number):storagedInterface | null {
+    const questionResponded = this.getResponseStorage();
+    const findedQuestion = questionResponded.find((item)=> item.questionId === questionId);
+    if(findedQuestion === undefined) {
+      return null
+    }else{
+      return findedQuestion
+    }
+  }
+
   private updateOrInsertArray(obj:storagedInterface,storagedData:storagedInterface[]):storagedInterface[]{
 
     const index = storagedData.findIndex((item) => item.questionId === obj.questionId);
