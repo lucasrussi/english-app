@@ -1,8 +1,9 @@
 'use client'
 import { useState } from "react";
 import Header from "../../../components/header/header.component";
-import QuestionMainSection from "../../../components/question/questionMainSection";
+import ChoiseQuestionMainSection from "../../../components/question/choiseQuestionMainSection";
 import InfoVerbToBeComponent from "../../../components/theory/infoVerbToBe.component";
+import TypeQuestion from "../../../components/question/typeQuestion";
 
 export default function PageVertToBe(){
 
@@ -18,8 +19,13 @@ export default function PageVertToBe(){
             <InfoVerbToBeComponent/>
           </section>
 
-          <section>
-            <QuestionMainSection
+          <section className="shadow-md rounded-md border px-8 py-2 border-gray-300 mb-4 bg-stone-100">
+            <TypeQuestion handleChangeTypeQuestion={function (type: string): void {
+              throw new Error("Function not implemented.");
+            } }/>
+
+
+            <ChoiseQuestionMainSection
               theme="to_be"
             />
           </section>

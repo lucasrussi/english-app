@@ -28,10 +28,6 @@ export default function ChoiseQuestionCard(props:Props){
 
   const getButtonStatus = (questionId:number):string =>{
 
-    console.log('questionAnswered',questionAnswered)
-    console.log('questionId',questionId)
-
-
     if(questionAnswered != null){
       if(questionAnswered === questionId && props.question.id === props.answeredQuestion?.questionId){
         return statusQuestionAnswered ? 'answered-correct' : 'answered-incorrect'
@@ -44,10 +40,15 @@ export default function ChoiseQuestionCard(props:Props){
   }
 
 
+  useEffect(()=>{
+    setExplanation('')
+  },[props.question])
+
+
 
   useEffect(()=>{
 
-
+    
     if(props.answeredQuestion != null && props.answeredQuestion.questionId === props.question.id){
       setQuestionAnswered(props.answeredQuestion.responseId)
       setStatusQuestionAnswered(props.answeredQuestion.status)

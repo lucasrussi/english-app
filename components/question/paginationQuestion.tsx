@@ -79,7 +79,7 @@ export default function PaginationQuestion(props: Props) {
                     ? questionIsResponded === true
                       ? 'bg-green-400'
                       : 'bg-red-400'
-                    : 'bg-gray-200'
+                    : 'bg-white'
                 }
               `}
               key={`question-index-${id}`}

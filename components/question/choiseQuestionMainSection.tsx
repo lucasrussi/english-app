@@ -35,7 +35,7 @@ interface storagedInterface {
   status:boolean
 }
 
-export default function QuestionMainSection(props:Props){
+export default function ChoseQuestionMainSection(props:Props){
 
   const [dataQuestion,setDataQuestion] = useState<ChoiseQuestionInterface[]>([])
   const [currentIdQuestion, setCurrentIdQuestion] = useState<number>(0)
