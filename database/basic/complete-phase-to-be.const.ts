@@ -94,16 +94,16 @@ export const CompletePhaseToBe = [
     phase: 'I ___ from Brazil.', 
     response: [
       { id:1,alternative: 'am', status: true,explanation:'' },
-      { id:2,alternative: 'is', status: false, explanation: "The subject 'I' requires the verb 'am' in the present tense, not 'is'." },
-      { id:3,alternative: 'are', status: false, explanation: "The subject 'I' takes 'am', not 'are'." }
+      { id:2,alternative: 'is', status: false, explanation: "O sujeito 'I' requer o verbo 'am' no presente do indicativo, não 'is'." },
+      { id:3,alternative: 'are', status: false, explanation: "O sujeito 'I' usa 'am', não 'are'." }
     ]
   },
   { 
     id:12,
     phase: 'You ___ not late.', 
     response: [
-      { id:1,alternative: 'am', status: false, explanation: "The subject 'You' does not use 'am'. It uses 'are'." },
-      { id:2,alternative: 'is', status: false, explanation: "The subject 'You' does not use 'is'. It uses 'are'." },
+      { id:1,alternative: 'am', status: false, explanation: "O sujeito 'You' não usa 'am'. It usa 'are'." },
+      { id:2,alternative: 'is', status: false, explanation: "O sujeito 'You' não usa 'is'. It usa 'are'." },
       { id:3,alternative: 'are', status: true,explanation:'' }
     ]
   },
@@ -111,17 +111,17 @@ export const CompletePhaseToBe = [
     id:13,
     phase: 'This ___ a beautiful painting.', 
     response: [
-      { id:1,alternative: 'am', status: false, explanation: "The subject 'This' requires the verb 'is', not 'am'." },
+      { id:1,alternative: 'am', status: false, explanation: "O sujeito 'This' requer o verbo 'is', não 'am'." },
       { id:2,alternative: 'is', status: true,explanation:'' },
-      { id:3,alternative: 'are', status: false, explanation: "The subject 'This' is singular and requires 'is', not 'are'." }
+      { id:3,alternative: 'are', status: false, explanation: "O sujeito 'This' requer o verbo 'is', não 'are'." }
     ]
   },
   { 
     id:14,
     phase: 'They ___ very tired.', 
     response: [
-      { id:1,alternative: 'am', status: false, explanation: "The subject 'They' does not use 'am'. It uses 'are'." },
-      { id:2,alternative: 'is', status: false, explanation: "The subject 'They' does not use 'is'. It uses 'are'." },
+      { id:1,alternative: 'am', status: false, explanation: "O sujeito 'They' não usa 'am'. It usa 'are'." },
+      { id:2,alternative: 'is', status: false, explanation: "O sujeito 'They' não usa 'is'. It usa 'are'." },
       { id:3,alternative: 'are', status: true,explanation:'' }
     ]
   },
@@ -129,17 +129,17 @@ export const CompletePhaseToBe = [
     id:15,
     phase: 'My car ___ blue.', 
     response: [
-      { id:1,alternative: 'am', status: false, explanation: "The subject 'My car' is singular and requires 'is', not 'am'." },
+      { id:1,alternative: 'am', status: false, explanation: "O sujeito 'My car' é singular e querer 'is', não 'am'." },
       { id:2,alternative: 'is', status: true,explanation:'' },
-      { id:3,alternative: 'are', status: false, explanation: "The subject 'My car' is singular, so 'are' is incorrect." }
+      { id:3,alternative: 'are', status: false, explanation: "O sujeito 'My car' é singular, então 'are' é incorreto." }
     ]
   },
   { 
     id:16,
     phase: 'The flowers ___ beautiful.', 
     response: [
-      { id:1,alternative: 'am', status: false, explanation: "The subject 'The flowers' does not use 'am'. It uses 'are'." },
-      { id:2,alternative: 'is', status: false, explanation: "The subject 'The flowers' does not use 'is'. It uses 'are'." },
+      { id:1,alternative: 'am', status: false, explanation: "O sujeito 'The flowers' não usa 'am'. Ele usa 'are'." },
+      { id:2,alternative: 'is', status: false, explanation: "O sujeito 'The flowers' não usa 'is'. Ele usa 'are'." },
       { id:3,alternative: 'are', status: true,explanation:'' }
     ]
   },
@@ -147,8 +147,8 @@ export const CompletePhaseToBe = [
     id:17,
     phase: 'We ___ in the same class.', 
     response: [
-      { id:1,alternative: 'am', status: false, explanation: "The subject 'We' does not use 'am'. It uses 'are'." },
-      { id:2,alternative: 'is', status: false, explanation: "The subject 'We' does not use 'is'. It uses 'are'." },
+      { id:1,alternative: 'am', status: false, explanation: "O sujeito 'We' não usa 'am'. Ele usa 'are'." },
+      { id:2,alternative: 'is', status: false, explanation: "O sujeito 'We' não usa 'is'. Ele usa 'are'." },
       { id:3,alternative: 'are', status: true,explanation:'' }
     ]
   },
@@ -157,26 +157,26 @@ export const CompletePhaseToBe = [
     phase: 'I ___ not hungry.', 
     response: [
       { id:1,alternative: 'am', status: true,explanation:'' },
-      { id:2,alternative: 'is', status: false, explanation: "The subject 'I' requires 'am', not 'is'." },
-      { id:3,alternative: 'are', status: false, explanation: "The subject 'I' requires 'am', not 'are'." }
+      { id:2,alternative: 'is', status: false, explanation: "O sujeito 'I' requer 'am', não 'is'." },
+      { id:3,alternative: 'are', status: false, explanation: "O sujeito 'I' requer 'am', não 'are'." }
     ]
   },
   { 
     id:19,
     phase: 'The weather ___ cold today.', 
     response: [
-      { id:1,alternative: 'am', status: false, explanation: "The subject 'The weather' requires 'is', not 'am'." },
+      { id:1,alternative: 'am', status: false, explanation: "O sujeito 'The weather' requer 'is', não 'am'." },
       { id:2,alternative: 'is', status: true,explanation:'' },
-      { id:3,alternative: 'are', status: false, explanation: "The subject 'The weather' is singular, so 'are' is incorrect." }
+      { id:3,alternative: 'are', status: false, explanation: "O sujeito 'The weather' é singular, então 'are' é incorreto." }
     ]
   },
   { 
     id:20,
     phase: 'He ___ my best friend.', 
     response: [
-      { id:1,alternative: 'am', status: false, explanation: "The subject 'He' does not use 'am'. It uses 'is'." },
+      { id:1,alternative: 'am', status: false, explanation: "O sujeito 'He' não usa 'am'. Ele usa 'is'." },
       { id:2,alternative: 'is', status: true,explanation:'' },
-      { id:3,alternative: 'are', status: false, explanation: "The subject 'He' is singular, so 'are' is incorrect." }
+      { id:3,alternative: 'are', status: false, explanation: "O sujeito 'He' is singular, então 'are' é incorreto." }
     ]
   },
   { 
@@ -367,14 +367,14 @@ export const CompletePhaseToBe = [
         id: 1, 
         alternative: 'am', 
         status: false,
-        explanation: "Use 'am' when the subject is 'I'. Here, the subject is 'This', which is singular, so 'am' is incorrect."
+        explanation: "Usamos 'am' quanto o sujeito é 'I'. Aqui, o sujeito é 'This',o qual é singular, então 'am' é incorreto."
       },
       { id: 2, alternative: 'is', status: true,explanation:'' },
       { 
         id: 3, 
         alternative: 'are', 
         status: false,
-        explanation: "Use 'are' for plural subjects. 'This' is singular, so 'are' is incorrect."
+        explanation: "Usamos 'are' para sujeitos no plural. 'This' é singular, então 'are' é incorreto."
       }
     ]
   },
@@ -386,9 +386,9 @@ export const CompletePhaseToBe = [
         id: 1, 
         alternative: 'am', 
         status: false,
-        explanation: "Use 'am' with 'I'. 'The stars' is plural, so 'am' is incorrect."
+        explanation: "Usamos 'am' com 'I'. 'The stars' é plural, então 'am' é incorreto."
       },
-      { id: 2, alternative: 'is', status: false, explanation: "Use 'is' for singular subjects. 'The stars' is plural, so 'is' is incorrect." },
+      { id: 2, alternative: 'is', status: false, explanation: "Usamos 'is' para sujeitos singulares. 'The stars' é plural, então 'is' é incorreto." },
       { id: 3, alternative: 'are', status: true,explanation:'' }
     ]
   },
@@ -400,9 +400,9 @@ export const CompletePhaseToBe = [
         id: 1, 
         alternative: 'am', 
         status: false,
-        explanation: "Use 'am' with 'I'. The subject here is 'We', which requires 'are'."
+        explanation: "Usamos 'am' com 'I'. O sujeito aqui é 'We', o qual requer 'are'."
       },
-      { id: 2, alternative: 'is', status: false, explanation: "Use 'is' for singular subjects. 'We' is plural, so 'is' is incorrect." },
+      { id: 2, alternative: 'is', status: false, explanation: "Usamos 'is' para sujeitos singulares. 'We' é plural, então 'is' é incorreto." },
       { id: 3, alternative: 'are', status: true,explanation:'' }
     ]
   },
@@ -415,13 +415,13 @@ export const CompletePhaseToBe = [
         id: 2, 
         alternative: 'is', 
         status: false, 
-        explanation: "Use 'is' for singular subjects, like 'He' or 'She'. 'I' requires 'am', so 'is' is incorrect."
+        explanation: "Usamos 'is' para sujeitos singulares, como 'He' ou 'She'. 'I' requer 'am', então 'is' é incorreto."
       },
       { 
         id: 3, 
         alternative: 'are', 
         status: false, 
-        explanation: "Use 'are' for plural subjects. 'I' requires 'am', so 'are' is incorrect."
+        explanation: "Usamos 'are' para sujeitos plurais. 'I' requer 'am', então 'are' é incorreto."
       }
     ]
   },
@@ -433,14 +433,14 @@ export const CompletePhaseToBe = [
         id: 1, 
         alternative: 'am', 
         status: false, 
-        explanation: "Use 'am' with 'I'. 'She' requires 'is', so 'am' is incorrect."
+        explanation: "Usamos 'am' com 'I'. 'She' requer 'is', então 'am' é incorreto."
       },
       { id: 2, alternative: 'is', status: true,explanation:'' },
       { 
         id: 3, 
         alternative: 'are', 
         status: false, 
-        explanation: "Use 'are' for plural subjects. 'She' requires 'is', so 'are' is incorrect."
+        explanation: "Usamos 'are' para sujeitos plurais. 'She' requer 'is', então 'are' é incorreto."
       }
     ]
   },
@@ -452,14 +452,14 @@ export const CompletePhaseToBe = [
         id: 1, 
         alternative: 'am', 
         status: false, 
-        explanation: "Use 'am' with 'I'. 'The phone' is singular, so 'am' is incorrect."
+        explanation: "Usamos 'am' with 'I'. 'The phone' é singular, então 'am' é incorreto."
       },
       { id: 2, alternative: 'is', status: true,explanation:'' },
       { 
         id: 3, 
         alternative: 'are', 
         status: false, 
-        explanation: "Use 'are' for plural subjects. 'The phone' is singular, so 'are' is incorrect."
+        explanation: "Usamos 'are' for sujeitos plurais. 'The phone' é singular, então 'are' é incorreto."
       }
     ]
   },
@@ -471,9 +471,9 @@ export const CompletePhaseToBe = [
         id: 1, 
         alternative: 'am', 
         status: false, 
-        explanation: "Use 'am' with 'I'. 'You' requires 'are', so 'am' is incorrect."
+        explanation: "Usamos 'am' with 'I'. 'You' requer 'are', então 'am' é incorreto."
       },
-      { id: 2, alternative: 'is', status: false, explanation: "Use 'is' for singular subjects. 'You' requires 'are', so 'is' is incorrect." },
+      { id: 2, alternative: 'is', status: false, explanation: "Usamos 'is' para sujeitos singulares. 'You' requer 'are', então 'is' é incorreto." },
       { id: 3, alternative: 'are', status: true,explanation:'' }
     ]
   },
@@ -485,9 +485,9 @@ export const CompletePhaseToBe = [
         id: 1, 
         alternative: 'am', 
         status: false, 
-        explanation: "Use 'am' with 'I'. 'They' requires 'are', so 'am' is incorrect."
+        explanation: "Usamos 'am' com 'I'. 'They' requer 'are', então 'am' é incorreto."
       },
-      { id: 2, alternative: 'is', status: false, explanation: "Use 'is' for singular subjects. 'They' is plural, so 'is' is incorrect." },
+      { id: 2, alternative: 'is', status: false, explanation: "Usamos 'is' para sujeitos singulares. 'They' is plural, então 'is' é incorreto." },
       { id: 3, alternative: 'are', status: true,explanation:'' }
     ]
   },
@@ -499,14 +499,14 @@ export const CompletePhaseToBe = [
         id: 1, 
         alternative: 'am', 
         status: false, 
-        explanation: "Use 'am' with 'I'. 'It' requires 'is', so 'am' is incorrect."
+        explanation: "Usamos 'am' com 'I'. 'It' requer 'is', então 'am' é incorreto."
       },
       { id: 2, alternative: 'is', status: true,explanation:'' },
       { 
         id: 3, 
         alternative: 'are', 
         status: false, 
-        explanation: "Use 'are' for plural subjects. 'It' is singular, so 'are' is incorrect."
+        explanation: "Usamos 'are' para sujeitos plurais. 'It' é singular, então 'are' é incorreto."
       }
     ]
   },
@@ -519,13 +519,13 @@ export const CompletePhaseToBe = [
         id: 2, 
         alternative: 'is', 
         status: false, 
-        explanation: "Use 'is' for singular subjects like 'He' or 'She'. 'I' requires 'am', so 'is' is incorrect."
+        explanation: "Usamos 'is' para sujeitos singulares como 'He' ou 'She'. 'I' requer 'am', então 'is' é incorreto."
       },
       { 
         id: 3, 
         alternative: 'are', 
         status: false, 
-        explanation: "Use 'are' for plural subjects. 'I' requires 'am', so 'are' is incorrect."
+        explanation: "Usamos 'are' para sujeitos plurais. 'I' requer 'am', então 'are' é incorreto."
       }
     ]
   }
