@@ -5,7 +5,7 @@ import ChoiseQuestionMainSection from "../../../components/question/choiseQuesti
 import InfoVerbToBeComponent from "../../../components/theory/infoVerbToBe.component";
 import TypeQuestion from "../../../components/question/typeQuestion";
 
-export default function PageVertToBe(){
+export default function PageVerbToBe(){
 
   return (
     <>
