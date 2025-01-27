@@ -13,10 +13,6 @@ export default function TypeQuestion(props:Props){
     {label:'Escute e Responda',type:'choise_answer',status:false}
   ]
 
-
-
-
-
   return (
     <section className="flex flex-col gap-2 mb-2 bg-white p-2 rounded-md border">
       <h4>Escolha o tipo de questão</h4>
